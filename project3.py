@@ -44,7 +44,7 @@ reader = easyocr.Reader(['en'])
 mydb = psycopg2.connect(
                         host='localhost',
                         user='postgres',
-                        password='Jameel123',
+                        password='Enter your password',
                         database='Bizcardx',
                         port='5432'
 )
@@ -145,39 +145,41 @@ elif Option=="Upload & Extract":
                     "pin_code" : [],
                     "image": img_to_binary(saved_img)}
             for ind, i in enumerate(res):
+              #TO GET WEBSITE  
                 if 'www' in i.lower() or "www." in i.lower():
                             data['website'].append(i)
                 elif 'WWW' in i:
                     data["website"] = res[4] +"." + res[5]
 
-                # To get EMAIL ID
+                # TO GET EMAIL ID
                 elif "@" in i:
                     data["email"].append(i)
 
+                #TO GET MOBILE NUMBER
                 elif "-" in i:
                     data["mobile_number"].append(i)
                     if len(data["mobile_number"]) ==2:
                         data["mobile_number"] = " & ".join(data["mobile_number"])
 
-                # To get COMPANY NAME  
+                # TO GET COMPANY NAME  
                 elif ind == len(res)-1:
                     data["company_name"].append(i)
 
-                # To get CARD HOLDER NAME
+                # TO GET CARD HOLDER NAME
                 elif ind == 0:
                     data["card_holder"].append(i)
 
-                # To get DESIGNATION
+                # TO GET DESIGNATION
                 elif ind == 1:
                     data["designation"].append(i)
 
-                # To get AREA
+                # TO GET AREA
                 if re.findall('^[0-9].+, [a-zA-Z]+',i):
                     data["area"].append(i.split(',')[0])
                 elif re.findall('[0-9] [a-zA-Z]+',i):
                     data["area"].append(i)
 
-                # To get CITY NAME
+                # TO GET CITY NAME
                 match1 = re.findall('.+St , ([a-zA-Z]+).+', i)
                 match2 = re.findall('.+St., ([a-zA-Z]+).+', i)
                 match3 = re.findall('^[E].*',i)
@@ -188,7 +190,7 @@ elif Option=="Upload & Extract":
                 elif match3:
                     data["city"].append(match3[0])
 
-                # To get STATE
+                # TO GET STATE
                 state_match = re.findall('[a-zA-Z]{9} +[0-9]',i)
                 if state_match:
                         data["state"].append(i[:9])
@@ -197,7 +199,7 @@ elif Option=="Upload & Extract":
                 if len(data["state"])== 2:
                     data["state"].pop(0)
 
-                # To get PINCODE        
+                # TO GET PINCODE        
                 if len(i)>=6 and i.isdigit():
                     data["pin_code"].append(i)
                 elif re.findall('[a-zA-Z]{9} +[0-9]',i):
