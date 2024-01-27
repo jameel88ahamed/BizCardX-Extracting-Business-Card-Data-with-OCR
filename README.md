@@ -20,17 +20,23 @@ This project is a user-friendly tool for extracting information from business ca
 3. PostgreSQL : Database management system for storing extracted business card information.
 4. Pandas : To Create a DataFrame with the scraped data
 5. OpenCV as CV2 : It is library used for processing image
-6. Matplotlib.pyplot : It is the library used for displaying imagesusing plot
+6. Matplotlib.pyplot : It is the library used for displaying images using plot
 7. Regular expressions : It is the library used to search the required texts.
 
 ## Workflow
 
 - Install the required libraries Python, Streamlit, EasyOCR, and a database system like PostgreSQL using the pip install command.
+  
 - Design a user-friendly interface with Streamlit allowing users to upload business card images and extract their information using widgets like file uploaders and buttons, I have created the app with three menu options namely HOME, UPLOAD & EXTRACT, Alter or delete where user has the option to upload the respective Business Card whose information has to be extracted, stored, updated or deleted if needed.
+  
 - Once user uploads a business card, the text present in the card is extracted by easyocr library.
+  
 - The extracted text is sent to get_data() function for respective text classification as company name, card holder name, designation, mobile number, email address, website URL, area, city, state, and pin code using loops and some regular expression.
+  
 - Presenting the extracted information in a structured manner within the Streamlit GUI using tables, text boxes, and labels.
+  
 - On Clicking Upload to Database Button the data gets stored in the PostgreSQL Database.
+  
 - Further with the help of Alter or Delete menu the uploaded data’s in SQL Database can be accessed for Read, Update and Delete Operations.
 
 ## Result
