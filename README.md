@@ -27,7 +27,7 @@ This project is a user-friendly tool for extracting information from business ca
 
 - Install the required libraries Python, Streamlit, EasyOCR, and a database system like PostgreSQL using the pip install command.
   
-- Design a user-friendly interface with Streamlit allowing users to upload business card images and extract their information using widgets like file uploaders and buttons, I have created the app with three menu options namely HOME, UPLOAD & EXTRACT, Alter or delete where user has the option to upload the respective Business Card whose information has to be extracted, stored, updated or deleted if needed.
+- Design a user-friendly interface with Streamlit allowing users to upload business card images and extract their information using widgets like file uploaders and buttons, I have created the app with three menu options namely HOME, UPLOAD & EXTRACT, ALTER OR DELETE where user has the option to upload the respective Business Card whose information has to be extracted, stored, updated or deleted if needed.
   
 - Once user uploads a business card, the text present in the card is extracted by easyocr library.
   
