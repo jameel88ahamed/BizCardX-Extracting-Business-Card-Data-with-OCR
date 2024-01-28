@@ -317,7 +317,7 @@ elif Option=="Alter or Delete":
             for row in data2:
                 Card_holder_names[row[0]] = row[0]
             selected_card = st.selectbox("Select a card holder name to Delete", list(Card_holder_names.keys()))
-            st.write(f"#### Did you want to delete :green[**{selected_card}'s**] card from database?")
+            st.write(f"#### Do you want to delete :green[**{selected_card}'s**] card from database?")
 
             if st.button("Yes Delete this Business Card"):
                 cursor.execute(f"DELETE FROM cards_data WHERE card_holder='{selected_card}'")
